@@ -8,7 +8,7 @@ Saleae I2S Analyzer
 
 Dependencies:
 - XCode with command line tools
-- CMake 3.11+
+- CMake 3.13+
 
 Installing command line tools after XCode is installed:
 ```
@@ -38,7 +38,7 @@ cmake --build .
 ### Ubuntu 16.04
 
 Dependencies:
-- CMake 3.11+
+- CMake 3.13+
 - gcc 4.8+
 
 Misc dependencies:
@@ -59,7 +59,7 @@ cmake --build .
 
 Dependencies:
 - Visual Studio 2015 Update 3
-- CMake 3.11+
+- CMake 3.13+
 
 **Visual Studio 2015**
 
@@ -78,8 +78,29 @@ https://cmake.org/download/
 Building the analyzer:
 ```
 mkdir build
-cd build
+cd build -A x64
 cmake ..
 ```
 
 Then, open the newly created solution file located here: `build\i2s_analyzer.sln`
+
+
+## Output Frame Format
+  
+### Frame Type: `"error"`
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| `error` | str | Error details. I2C errors usually indicate the wrong number of bits inside of a frame |
+
+I2S decode error
+
+### Frame Type: `"data"`
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| `channel` | int | channel index. 0 or 1 |
+| `data` | int | Audio value. signed or unsigned, based on I2S/PCM analyzer settings |
+
+A single sample from a single channel
+
