@@ -122,7 +122,7 @@ For debug and release builds, respectively.
 
 
 ## Output Frame Format
-  
+
 ### Frame Type: `"error"`
 
 | Property | Type | Description |
